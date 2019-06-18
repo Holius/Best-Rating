@@ -12,12 +12,21 @@ const broncos = {
   let allQBs = Object.keys(this.players.QB);
     for (i = 0; i < allQBs.length; i++) { 
   rateArray.push(this.players.QB[allQBs[i]].rating); }
-  let comparison = 0;
+   let comparison = 0;
    for (let i = 0; i < rateArray.length; i++) { if (rateArray[i] > comparison) {comparison = rateArray[i]};
    }
-   return comparison;
+  for (let i = 0; i < allQBs.length; i++) {
+if (this.players.QB[allQBs[i]].rating = comparison) {
+  return `The player with highest QB rating is ${this.players.QB[allQBs[i]].name}, and this QB's rating is ${comparison}.`;
+  ;
+      }
+    }
   }
-//Above is the function that gets the following array: [100, 90, 80].  Then, it compares the element at index 0 to the next element - and so on - returning the highest rating for QBs.  
 };
+
+//Above is the function that gets the following array: [100, 90, 80].  
+//Then, it compares the element at index 0 to the next element - and so on - returning the highest rating for QBs. 
+//Then, it takes the highest rating and returns the name and rating of the best QB.
+
 
 console.log(broncos.bestQBRating());
