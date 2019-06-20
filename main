@@ -1,12 +1,36 @@
 const broncos = {
   players: { 
+  QB: 
+    [{name: 'John Elway', rating: 100},
+    {name: 'Jake Plummer', rating: 90},
+    {name: 'Tim Tebow', rating: 80}]
+    },
+  bestQBRating: function () {
+    const work = this.players.QB.map(ratNum => ratNum.rating)
+    .reduce((acc, score) => (acc || 0) > score ? acc : score);
+    return work;
+  },   
+ getBestQB: function () {
+    let rate = this.bestQBRating();
+    let answer = this.players.QB.filter(function (theVeryBest) 
+       {if (theVeryBest.rating === rate) {return theVeryBest.name}
+     }) 
+let {name: best, rating: bestR} = answer[0];
+    return `The best QB is ${best}. The QB's rating is ${bestR}.`;
+ } 
+};
+
+console.log(broncos.getBestQB());
+
+/*
+const broncos = {
+  players: { 
   QB: {
     QB0: {name: 'John Elway', rating: 100},
     QB1: {name: 'Jake Plummer', rating: 90},
     QB2: {name: 'Tim Tebow', rating: 80}
     }
   },
-//Above is the obj that I want to extract the rating of all QBs into an array such that it equals this: [100, 90, 80]. 
   bestQBRating: function () {
   const rateArray = []
   let allQBs = Object.keys(this.players.QB);
@@ -24,9 +48,5 @@ if (this.players.QB[allQBs[i]].rating = comparison) {
   }
 };
 
-//Above is the function that gets the following array: [100, 90, 80].  
-//Then, it compares the element at index 0 to the next element - and so on - returning the highest rating for QBs. 
-//Then, it takes the highest rating and returns the name and rating of the best QB.
-
-
 console.log(broncos.bestQBRating());
+*/
